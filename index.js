@@ -16,7 +16,8 @@ exports.start = function (options) {
   var defaults = {
     sampleRate : 16000,
     compress   : false,
-    verbose    : false
+    verbose    : false,
+    gain       : 1
   };
 
   options = _.extend(defaults, options);
@@ -31,7 +32,8 @@ exports.start = function (options) {
     '-b', '16',               // precision (bits)
     '-t', 'wav',              // audio type
     '--buffer', '320',
-    '-'
+    '-',
+    'gain', '' + options.gain
   ];
 
   if (options.verbose)
