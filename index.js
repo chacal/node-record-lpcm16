@@ -16,7 +16,6 @@ exports.start = function (options) {
   var defaults = {
     sampleRate : 16000,
     compress   : false,
-    threshold  : 0.5,
     verbose    : false
   };
 
@@ -31,10 +30,8 @@ exports.start = function (options) {
     '-e', 'signed-integer',   // sample encoding
     '-b', '16',               // precision (bits)
     '-t', 'wav',              // audio type
-    '-',                      // pipe
-                              // end on silence
-    'silence', '1','0.1', options.threshold + '%',
-               '1','1.0', options.threshold + '%'
+    '--buffer', '320',
+    '-'
   ];
 
   if (options.verbose)
